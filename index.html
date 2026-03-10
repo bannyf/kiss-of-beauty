@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiss of Beauty - Agenda tu hora</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff5fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #ff8ac9;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #ff4fa3;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ffb6d9;
+        }
+
+        button {
+            background: #ff4fa3;
+            color: white;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e63f92;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER CON LOGOS A LOS LADOS -->
+<header>
+    <div style="display:flex; align-items:center; justify-content:center; gap:20px;">
+        <img src="arandano.png" style="height:70px; width:auto;">
+        
+        <div style="text-align:center; min-width:200px;">
+            <h1 style="margin:0; font-size:28px;">Kiss of Beauty</h1>
+            <p style="margin:0; font-size:16px;">Agenda tu hora</p>
+        </div>
+
+        <img src="arandano.png" style="height:70px; width:auto;">
+    </div>
+</header>
+
+<!-- SECCIÓN ESTILO CANDY MINIMALISTA -->
+<section style="padding: 40px 20px; max-width: 900px; margin: auto;">
+
+    <h2>Reserva tu servicio</h2>
+    <p>Completa el formulario y te confirmaremos por WhatsApp.</p>
+
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+    ">
+
+        <!-- MISMA FOTO, versión mini izquierda -->
+        <img src="pintura.png" style="
+            width: 110px;
+            height: auto;
+            opacity: 0.55;
+            border-radius: 12px;
+        ">
+
+        <!-- FORMULARIO -->
+        <form id="formulario" style="
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #ffd1e8;
+            width: 100%;
+            max-width: 400px;
+        ">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" required>
+
+            <label>WhatsApp:</label>
+            <input type="text" id="telefono" required>
+
+            <label>Servicio:</label>
+            <select id="servicio" required>
+                <option>Manicure tradicional</option>
+                <option>Uñas gel</option>
+                <option>Acrílicas</option>
+                <option>Relleno</option>
+                <option>Decoración</option>
+            </select>
+
+            <label>Fecha deseada:</label>
+            <input type="date" id="fecha" required>
+
+            <label>Hora deseada:</label>
+            <input type="time" id="hora" required>
+
+            <label>Comentarios:</label>
+            <textarea id="comentarios" rows="3"></textarea>
+
+            <button type="button" onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
+        </form>
+
+        <!-- MISMA FOTO, versión mini derecha -->
+        <img src="pintura.png" style="
+            width: 110px;
+            height: auto;
+            opacity: 0.55;
+            border-radius: 12px;
+        ">
+
+    </div>
+</section>
+
+<!-- SCRIPT PARA ENVIAR A WHATSAPP -->
+<script>
+function enviarWhatsApp() {
+    let nombre = document.getElementById("nombre").value;
+    let telefono = document.getElementById("telefono").value;
+    let servicio = document.getElementById("servicio").value;
+    let fecha = document.getElementById("fecha").value;
+    let hora = document.getElementById("hora").value;
+    let comentarios = document.getElementById("comentarios").value;
+
+    let mensaje = 
+        "Nueva reserva:%0A" +
+        "Nombre: " + nombre + "%0A" +
+        "WhatsApp: " + telefono + "%0A" +
+        "Servicio: " + servicio + "%0A" +
+        "Fecha: " + fecha + "%0A" +
+        "Hora: " + hora + "%0A" +
+        "Comentarios: " + comentarios;
+
+    let numero = "569XXXXXXXX"; /* Cambia por tu número real */
+
+    window.open("https://wa.me/" + numero + "?text=" + mensaje, "_blank");
+}
+</script>
+
+</body>
+</html>
